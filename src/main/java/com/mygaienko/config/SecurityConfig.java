@@ -28,7 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/user/**").hasRole("USER")
                 .and()
                 .formLogin()
-                    .loginPage("/login").failureUrl("/login-error");
+                    .loginPage("/login").failureUrl("/login-error")
+                .and()
+                .rememberMe().tokenValiditySeconds(10);
     }
 
     @Autowired
