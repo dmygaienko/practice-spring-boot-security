@@ -2,12 +2,13 @@ package com.mygaienko;
 
 import com.mygaienko.config.AppConfig;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
+ * http://localhost:8080/login
+ *
  * Created by enda1n on 03.10.2016.
  */
 @SpringBootApplication
