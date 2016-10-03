@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login").failureUrl("/login-error")
                 .and()
-                .rememberMe().tokenValiditySeconds(10);
+                .rememberMe().tokenValiditySeconds(6000);
     }
 
     @Autowired
