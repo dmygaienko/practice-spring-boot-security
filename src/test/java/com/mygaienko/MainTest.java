@@ -12,7 +12,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
 
 
 /**
@@ -33,9 +36,18 @@ public class MainTest {
     }
 
     @Test
-    public void testLogin() throws Exception {
+    public void testGetLogin() throws Exception {
         this.mockMvc.perform(get("/login")
                 .accept(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testPostLogin() throws Exception {
+        this.mockMvc.perform(post("/login")
+                .with(csrf())
+                .accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/login-error"));
     }
 }
