@@ -50,4 +50,17 @@ public class MainTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/login-error"));
     }
+
+    @Test
+    public void testPostSuccessLogin() throws Exception {
+        this.mockMvc.perform(post("/login")
+                .with(csrf())
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("username", "username")
+                .param("password", "password")
+
+                .accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/index"));
+    }
 }
