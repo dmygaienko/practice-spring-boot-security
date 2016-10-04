@@ -19,6 +19,8 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 
 
 /**
+ * https://www.petrikainulainen.net/programming/spring-framework/integration-testing-of-spring-mvc-applications-forms/
+ *
  * Created by dmygaenko on 04/10/2016.
  */
 @RunWith(SpringRunner.class)
