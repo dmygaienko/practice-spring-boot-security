@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface ExportService {
 
-    <T> void print(ServletOutputStream outputStream, List<T> entities, ExportType type);
+    void export(ServletOutputStream outputStream, ExportType type);
 }
