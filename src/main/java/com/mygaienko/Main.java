@@ -9,6 +9,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 /**
  * http://localhost:8080/login
  *
+ *
+ *
+ * localhost:8080/bentity/export/BENTITY_CSV
+ * localhost:8080/aentity/export/AENTITY_CSV
+ *
  * Created by enda1n on 03.10.2016.
  */
 @SpringBootApplication

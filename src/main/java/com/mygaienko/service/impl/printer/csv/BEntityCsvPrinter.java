@@ -36,7 +36,7 @@ public class BEntityCsvPrinter implements Printer<BEntity> {
                                     csvPrinter.print(entity.getB4());
                                     csvPrinter.println();
                                 } catch (IOException e) {
-                                    logger.error("Error occurred during writing BEntity to stream", e);
+                                    logger.error("Error occurred during writing BEntity to csv stream", e);
                                 }
 
                             }

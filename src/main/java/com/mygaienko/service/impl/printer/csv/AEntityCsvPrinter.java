@@ -35,7 +35,7 @@ public class AEntityCsvPrinter implements Printer<AEntity> {
                                     csvPrinter.print(entity.getA2());
                                     csvPrinter.println();
                                 } catch (IOException e) {
-                                    logger.error("Error occurred during writing AEntity to stream", e);
+                                    logger.error("Error occurred during writing AEntity to csv stream", e);
                                 }
 
                             }
