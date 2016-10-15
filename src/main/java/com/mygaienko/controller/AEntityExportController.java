@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by enda1n on 13.10.2016.
  */
-@Controller("/aentity")
+@Controller
+@RequestMapping("/aentity")
 public class AEntityExportController extends AbstractExportController {
 
     @Autowired
@@ -24,7 +25,7 @@ public class AEntityExportController extends AbstractExportController {
     private ExportService aExportService;
 
     @RequestMapping("/export/{type}")
-    public void export(@RequestBody Dto dto, @PathVariable("type") ExportType type, HttpServletResponse response) {
+    public void export(/*@RequestBody Dto dto, */@PathVariable("type") ExportType type, HttpServletResponse response) {
         export(response, getFileName(), outputStream -> aExportService.export(outputStream, type));
     }
 

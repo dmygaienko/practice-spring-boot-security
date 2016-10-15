@@ -6,7 +6,7 @@ import org.springframework.context.annotation.*;
  * Created by enda1n on 03.10.2016.
  */
 @Configuration
-@ComponentScan(basePackages = "com.mygaienko.controller")
+@ComponentScan(basePackages = {"com.mygaienko.controller", "com.mygaienko.service.impl"})
 @Import(SecurityConfig.class)
 public class AppConfig {
 

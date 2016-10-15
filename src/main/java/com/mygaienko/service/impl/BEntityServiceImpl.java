@@ -2,6 +2,7 @@ package com.mygaienko.service.impl;
 
 import com.mygaienko.model.BEntity;
 import com.mygaienko.service.BEntityService;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by enda1n on 15.10.2016.
  */
+@Service
 public class BEntityServiceImpl implements BEntityService {
 
     @Override

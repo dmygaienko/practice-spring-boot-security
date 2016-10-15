@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by enda1n on 13.10.2016.
  */
-@Controller("/bentity")
+@Controller
+@RequestMapping("/bentity")
 public class BEntityExportController extends AbstractExportController {
 
     @Autowired

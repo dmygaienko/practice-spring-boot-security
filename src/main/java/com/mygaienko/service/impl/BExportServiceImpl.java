@@ -14,7 +14,7 @@ import javax.servlet.ServletOutputStream;
 /**
  * Created by enda1n on 14.10.2016.
  */
-@Service("aExportService")
+@Service("bExportService")
 public class BExportServiceImpl implements ExportService {
 
     @Autowired
