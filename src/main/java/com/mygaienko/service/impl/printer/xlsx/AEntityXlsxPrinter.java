@@ -1,9 +1,10 @@
-package com.mygaienko.service.impl;
+package com.mygaienko.service.impl.printer.xlsx;
 
 import com.mygaienko.model.AEntity;
 import com.mygaienko.service.Printer;
 
 import javax.servlet.ServletOutputStream;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
 public class AEntityXlsxPrinter implements Printer<AEntity> {
 
     @Override
-    public void print(ServletOutputStream outputStream, List<AEntity> entities) {
+    public void print(PrintWriter writer, List<AEntity> entities) {
 
     }
 }

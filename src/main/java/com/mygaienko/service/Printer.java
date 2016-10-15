@@ -1,7 +1,8 @@
 package com.mygaienko.service;
 
 
-import javax.servlet.ServletOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -9,5 +10,5 @@ import java.util.List;
  */
 public interface Printer<T> {
 
-    void print(ServletOutputStream outputStream, List<T> entities);
+    void print(PrintWriter writer, List<T> entities) throws IOException;
 }

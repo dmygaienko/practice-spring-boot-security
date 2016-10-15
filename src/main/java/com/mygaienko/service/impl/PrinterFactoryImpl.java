@@ -3,8 +3,10 @@ package com.mygaienko.service.impl;
 import com.mygaienko.model.ExportType;
 import com.mygaienko.service.Printer;
 import com.mygaienko.service.PrinterFactory;
-import com.mygaienko.service.impl.AEntityCsvPrinter;
-import com.mygaienko.service.impl.AEntityXlsxPrinter;
+import com.mygaienko.service.impl.printer.csv.AEntityCsvPrinter;
+import com.mygaienko.service.impl.printer.csv.BEntityCsvPrinter;
+import com.mygaienko.service.impl.printer.xlsx.AEntityXlsxPrinter;
+import com.mygaienko.service.impl.printer.xlsx.BEntityXlsxPrinter;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,10 +26,10 @@ public class PrinterFactoryImpl implements PrinterFactory {
                 printer = new AEntityXlsxPrinter();
                 break;
             case BENTITY_CSV:
-                printer = new AEntityCsvPrinter();
+                printer = new BEntityCsvPrinter();
                 break;
             case BENTITY_XLSX:
-                printer = new AEntityXlsxPrinter();
+                printer = new BEntityXlsxPrinter();
                 break;
             default: throw new IllegalStateException("Printer for export cannot be defined");
         }

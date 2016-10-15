@@ -1,14 +1,15 @@
 package com.mygaienko.service.impl;
 
 import com.mygaienko.model.AEntity;
+import com.mygaienko.service.impl.printer.csv.AEntityCsvPrinter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import javax.servlet.ServletOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,11 +24,11 @@ import static org.mockito.Mockito.doThrow;
 public class CsvPrinterTest {
 
     @Mock
-    private ServletOutputStream outputStream;
+    private PrintWriter writer;
 
     @Before
     public void init() throws IOException {
-       doThrow(IOException.class).when(outputStream).print(anyString());
+       doThrow(IOException.class).when(writer).print(anyString());
     }
 
     @Test
@@ -36,6 +37,6 @@ public class CsvPrinterTest {
         List<AEntity> entities = Arrays.asList(
                 new AEntity("a11", "a22")
         );
-        csvPrinter.print(outputStream, entities);
+        csvPrinter.print(writer, entities);
     }
 }

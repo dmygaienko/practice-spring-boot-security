@@ -1,5 +1,6 @@
 package com.mygaienko.model;
 
+
 /**
  * Created by enda1n on 14.10.2016.
  */

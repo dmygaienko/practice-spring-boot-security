@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,8 +23,8 @@ public class BEntityExportController extends AbstractExportController {
     private ExportService bExportService;
 
     @RequestMapping("/export/{type}")
-    public void export(@RequestBody Dto dto, @PathVariable("type") ExportType type, HttpServletResponse response) {
-        export(response, getFileName("bentity", type.getFileType()), outputStream -> bExportService.export(outputStream, type));
+    public void export(/*@RequestBody Dto dto, */@PathVariable("type") ExportType type, HttpServletResponse response) {
+        export(response, getFileName("bentity", type.getFileType()), writer -> bExportService.export(writer, type));
     }
 
 }

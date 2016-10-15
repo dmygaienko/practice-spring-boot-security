@@ -3,6 +3,8 @@ package com.mygaienko.service;
 import com.mygaienko.model.ExportType;
 
 import javax.servlet.ServletOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -10,5 +12,5 @@ import java.util.List;
  */
 public interface ExportService {
 
-    void export(ServletOutputStream outputStream, ExportType type);
+    void export(PrintWriter writer, ExportType type);
 }
