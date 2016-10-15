@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface ExportService {
 
-    void export(PrintWriter writer, ExportType type);
+    void export(ServletOutputStream outputStream, ExportType type);
 }

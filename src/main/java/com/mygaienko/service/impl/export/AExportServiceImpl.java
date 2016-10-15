@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -28,10 +29,10 @@ public class AExportServiceImpl implements ExportService {
     @Autowired
     private AEntityService aEntityService;
 
-    public void export(PrintWriter writer, ExportType type) {
+    public void export(ServletOutputStream outputStream, ExportType type) {
         Printer<AEntity> printer = printerFactory.getPrinter(type);
         try {
-            printer.print(writer, aEntityService.getAll());
+            printer.print(outputStream, aEntityService.getAll());
         } catch (IOException e) {
             logger.error("Error occurred during export AEntity to stream", e);
         }

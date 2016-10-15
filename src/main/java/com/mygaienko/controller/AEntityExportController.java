@@ -23,7 +23,10 @@ public class AEntityExportController extends AbstractExportController {
 
     @RequestMapping("/export/{type}")
     public void export(/*@RequestBody Dto dto, */@PathVariable("type") ExportType type, HttpServletResponse response) {
-        export(response, getFileName("aentity", type.getFileType()), writer -> aExportService.export(writer, type));
+        export(
+                response,
+                getFileName("aentity", type.getFileType()),
+                writer -> aExportService.export(writer, type));
     }
 
 }

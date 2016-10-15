@@ -13,7 +13,7 @@ import java.util.List;
 public class BEntityXlsxPrinter implements Printer<AEntity> {
 
     @Override
-    public void print(PrintWriter writer, List<AEntity> entities) {
+    public void print(ServletOutputStream outputStream, List<AEntity> entities) {
 
     }
 }

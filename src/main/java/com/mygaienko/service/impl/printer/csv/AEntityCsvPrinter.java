@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -21,20 +22,24 @@ public class AEntityCsvPrinter implements Printer<AEntity> {
     private static final Logger logger = LoggerFactory.getLogger(AEntityCsvPrinter.class);
 
     @Override
-    public void print(PrintWriter writer, List<AEntity> entities) throws IOException {
-        CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withRecordSeparator("\n"));
+    public void print(ServletOutputStream outputStream, List<AEntity> entities) throws IOException {
 
-        entities.stream()
-                .forEach(entity -> {
-                            try {
-                                csvPrinter.print(entity.getA1());
-                                csvPrinter.print(entity.getA2());
-                                csvPrinter.println();
-                            } catch (IOException e) {
-                                logger.error("Error occurred during writing AEntity to stream", e);
+        try (
+                PrintWriter printWriter = new PrintWriter(outputStream);
+                CSVPrinter csvPrinter = new CSVPrinter(printWriter, CSVFormat.DEFAULT.withRecordSeparator("\n"))) {
+
+            entities.stream()
+                    .forEach(entity -> {
+                                try {
+                                    csvPrinter.print(entity.getA1());
+                                    csvPrinter.print(entity.getA2());
+                                    csvPrinter.println();
+                                } catch (IOException e) {
+                                    logger.error("Error occurred during writing AEntity to stream", e);
+                                }
+
                             }
-
-                        }
-                );
+                    );
+        }
     }
 }

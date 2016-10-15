@@ -3,6 +3,7 @@ package com.mygaienko.controller;
 
 import com.mygaienko.model.FileType;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,11 +19,11 @@ public abstract class AbstractExportController {
     private static final String simplePattern = "yyyy-MM-dd";
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(simplePattern);
 
-    public void export(HttpServletResponse response, String fileName, Consumer<PrintWriter> export) {
+    public void export(HttpServletResponse response, String fileName, Consumer<ServletOutputStream> export) {
         response.setContentType("text/csv");
         response.setHeader("Content-disposition", "attachment;filename=" + fileName);
 
-        try (PrintWriter writer = response.getWriter()) {
+        try (ServletOutputStream writer = response.getOutputStream()) {
             export.accept(writer);
         } catch (IOException e) {
             e.printStackTrace();
