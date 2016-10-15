@@ -17,30 +17,24 @@ import java.util.List;
  * Created by enda1n on 14.10.2016.
  */
 @Service
-public class BEntityCsvPrinter implements Printer<BEntity> {
+public class BEntityCsvPrinter extends AbstractCsvPrinter<BEntity> {
 
     private static final Logger logger = LoggerFactory.getLogger(BEntityCsvPrinter.class);
 
     @Override
-    public void print(ServletOutputStream outputStream, List<BEntity> entities) throws IOException {
-        try (
-                PrintWriter printWriter = new PrintWriter(outputStream);
-                CSVPrinter csvPrinter = new CSVPrinter(printWriter, CSVFormat.DEFAULT.withRecordSeparator("\n"))) {
-
-            entities.stream()
-                    .forEach(entity -> {
-                                try {
-                                    csvPrinter.print(entity.getB1());
-                                    csvPrinter.print(entity.getB2());
-                                    csvPrinter.print(entity.getB3());
-                                    csvPrinter.print(entity.getB4());
-                                    csvPrinter.println();
-                                } catch (IOException e) {
-                                    logger.error("Error occurred during writing BEntity to csv stream", e);
-                                }
-
+    protected void printEntities(CSVPrinter csvPrinter, List<BEntity> entities) {
+        entities.stream()
+                .forEach(entity -> {
+                            try {
+                                csvPrinter.print(entity.getB1());
+                                csvPrinter.print(entity.getB2());
+                                csvPrinter.print(entity.getB3());
+                                csvPrinter.print(entity.getB4());
+                                csvPrinter.println();
+                            } catch (IOException e) {
+                                logger.error("Error occurred during writing BEntity to csv stream", e);
                             }
-                    );
-        }
+                        }
+                );
     }
 }
