@@ -14,8 +14,6 @@ import java.util.stream.IntStream;
  */
 public class AEntityXlsxPrinter extends AbstractXlsxPrinter<AEntity> {
 
-    private static final Logger logger = LoggerFactory.getLogger(AEntityXlsxPrinter.class);
-
     @Override
     public void printSheet(XSSFSheet sheet, List<AEntity> entities) {
         IntStream.range(0, entities.size())
